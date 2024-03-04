@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+//TESTTTTT
 
 const int ROWS = 2;
 const int COLS = 9;
@@ -73,6 +74,10 @@ void shellSort(int arr[ROWS][COLS], int row) {
             }
         }
     }
+}
+
+void heapSort() {
+    std::cout << "Hello";
 }
 
 int main() {
