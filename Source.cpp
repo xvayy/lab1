@@ -1,14 +1,12 @@
 #include <iostream>
 #include <algorithm>
-#include <ctime>
 #include <cstdlib>
-//TESTTTTT
 
 const int ROWS = 2;
 const int COLS = 9;
 
 void fillRandomArray(int arr[ROWS][COLS]) {
-    // Заповнення масиву випадковими значеннями
+    // Filling the array with random values
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
             arr[i][j] = std::rand() % 100;
@@ -17,7 +15,7 @@ void fillRandomArray(int arr[ROWS][COLS]) {
 }
 
 void printArray(const int arr[ROWS][COLS]) {
-    // Виведення масиву на екран
+    // Printing the array to the console
     for (int i = 0; i < ROWS; ++i) {
         for (int j = 0; j < COLS; ++j) {
             std::cout << arr[i][j] << "\t";
@@ -27,12 +25,12 @@ void printArray(const int arr[ROWS][COLS]) {
 }
 
 int findMinEl(int arr[ROWS][COLS]) {
-    std::cout << "Знаходження рядка, що містить мінімальний елемент" << std::endl;
+    std::cout << "Finding the row with the minimum element" << std::endl;
 
-    int* minArr = new int[ROWS]; 
+    int* minArr = new int[ROWS];
 
     for (int i = 0; i < ROWS; i++) {
-        int min = arr[i][0];  
+        int min = arr[i][0];
 
         for (int j = 0; j < COLS; j++) {
             std::cout << arr[i][j] << "\t";
@@ -42,7 +40,7 @@ int findMinEl(int arr[ROWS][COLS]) {
             }
         }
 
-        minArr[i] = min;  
+        minArr[i] = min;
         std::cout << std::endl;
     }
 
@@ -55,16 +53,19 @@ int findMinEl(int arr[ROWS][COLS]) {
         }
     }
 
-    delete[] minArr; 
-    std::cout << "Мінімальний елемент: " << minimal << std::endl;
-    std::cout << "Індекс рядка з мінімальним елементом: " << minIndex << std::endl;
+    delete[] minArr;
+    std::cout << "Minimum element: " << minimal << std::endl;
+    std::cout << "Index of the row with the minimum element: " << minIndex << std::endl;
     return minIndex;
 }
 
 void shellSort(int arr[ROWS][COLS], int row) {
+    // Shell Sort implementation for the specified row of the 2D array
     for (int gap = COLS / 2; gap >= 1; gap /= 2) {
         for (int j = gap; j < COLS; j++) {
+            // Iterate through the array elements with the given gap
             for (int i = j - gap; i >= 0; i -= gap) {
+                // Compare and swap elements with a gap
                 if (arr[row][i + gap] > arr[row][i]) {
                     break;
                 }
@@ -76,10 +77,6 @@ void shellSort(int arr[ROWS][COLS], int row) {
     }
 }
 
-void heapSort() {
-    std::cout << "Hello";
-}
-
 int main() {
     setlocale(LC_ALL, "Ukrainian");
     std::srand(std::time(0));
@@ -88,13 +85,13 @@ int main() {
 
     fillRandomArray(array);
 
-    std::cout << "Початковий масив:" << std::endl;
+    std::cout << "Initial array:" << std::endl;
     printArray(array);
 
     int minRowIndex = findMinEl(array);
     shellSort(array, minRowIndex);
 
-    std::cout << "\nМасив після сортування за зростанням рядка, що містить мінімальний елемент:" << std::endl;
+    std::cout << "\nShell Sort" << std::endl;
     printArray(array);
 
     return 0;
