@@ -78,7 +78,6 @@ void shellSort(int arr[ROWS][COLS], int row) {
 }
 
 int main() {
-    setlocale(LC_ALL, "Ukrainian");
     std::srand(std::time(0));
 
     int array[ROWS][COLS];
